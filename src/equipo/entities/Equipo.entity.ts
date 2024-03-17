@@ -14,6 +14,9 @@ export class Equipo {
     @Column()
     serial: string;
 
+    @Column({nullable: true,default: null})
+    serialtelefonico: string;
+
     @Column()
     descripcion: string;
     
