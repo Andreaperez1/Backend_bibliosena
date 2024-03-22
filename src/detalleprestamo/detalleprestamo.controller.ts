@@ -3,6 +3,7 @@ import { DetalleprestamoService } from './detalleprestamo.service';
 import { CreateDetallePrestamoDto } from './dto/create-detalleprestamo.dto';
 import { UpdateDetallePrestamoDto } from './dto/update-detalleprestamo.dto';
 import { AdminAuthGuard } from 'src/guard/admin.guard';
+import { AuthGuard } from '@nestjs/passport';
 
 
 
@@ -16,15 +17,18 @@ export class DetalleprestamoController {
     return this.detalleprestamoService.crearPrestamo(createDetalleprestamoDto);
   }
   
+
   @Get()
   obtener() {
     return this.detalleprestamoService.obtenerTodo();
   }
-
+  
+  @UseGuards(AdminAuthGuard)
   @Get('obtener/:id')
   obtenerPorId(@Param('id') id: number) {
     return this.detalleprestamoService.obtenerPorId(id);
   }
+  @UseGuards(AdminAuthGuard)
   @Delete('/:id')
   eliminar(@Param('id') id: number) {
     return this.detalleprestamoService.eliminarPrestamo(id);

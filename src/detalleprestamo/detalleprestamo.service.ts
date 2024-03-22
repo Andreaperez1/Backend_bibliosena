@@ -24,7 +24,7 @@ export class DetalleprestamoService {
     return await this.detalleprestamoTabla.insert(detalleprestamo);
   }
 
-  async obtener(id_equipo, fecha_prestamo, fecha_devolucion) {
+  async obtener(id_equipo: any, fecha_prestamo: any, fecha_devolucion: any) {
     console.log('ob', id_equipo, fecha_prestamo, fecha_devolucion);
     const r = await this.dataSource.getRepository(DetallePrestamo).findBy({
       fecha_prestamo: LessThanOrEqual(fecha_devolucion),
